@@ -14,12 +14,14 @@ class Game {
     public dx = 0;
     public dy = 0;
     private moving: NodeJS.Timer;
-    private canvas: Canvas | null
+    private canvas: Canvas | null;
+    private WINDOW: {LEFT: number, TOP: number, HEIGHT: number, WIDTH: number};
 
-    constructor(canvas: Canvas) {
+    constructor(canvas: Canvas, WINDOW: {LEFT: number, TOP: number, HEIGHT: number, WIDTH: number}) {
         this.kapitoshka = { x: 2, y: 5 };
         this.canvas = canvas;
         this.moving = setInterval(() => this.velocity(), 10);
+        this.WINDOW = WINDOW;
     }
 
     destructor() {
@@ -58,10 +60,11 @@ class Game {
     }
 
     move(dx: number, dy: number): void {
-        if ((dx > 0 && this.kapitoshka.x + dx <= WIDTH - 1 && !this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'right')) ||
+        if ((dx > 0 && !this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'right')) ||
             (dx < 0 && this.kapitoshka.x - dx >= 0 && !this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'left'))
         ) {
             this.kapitoshka.x += dx;
+            this.WINDOW.LEFT += dx;
         }
         if ((dy > 0 && this.kapitoshka.y + dy <= HEIGHT - 1 && !this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'down')) ||
             (dy < 0 && this.kapitoshka.y - dy >= 0 && !this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'up'))

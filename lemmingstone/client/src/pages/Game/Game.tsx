@@ -99,7 +99,7 @@ const GamePage: React.FC<IBasePage> = (props: IBasePage) => {
                 mouseRightClick,
             },
         });
-        game = new Game(canvas);
+        game = new Game(canvas, WINDOW);
         printMap(canvas);
         return () => {
             // деинициализировать все экземпляры
