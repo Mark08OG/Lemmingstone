@@ -60,11 +60,17 @@ class Game {
     }
 
     move(dx: number, dy: number): void {
-        if ((dx > 0 && !this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'right')) ||
+        if ((dx > 0 && this.kapitoshka.x + dx <= (this.WINDOW.LEFT + this.WINDOW.WIDTH) && !this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'right')) ||
             (dx < 0 && this.kapitoshka.x - dx >= 0 && !this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'left'))
         ) {
+            if (((this.kapitoshka.x > (this.WINDOW.LEFT + this.WINDOW.WIDTH / 2 - 0.5)) && (this.kapitoshka.x < (this.WINDOW.LEFT + ((this.WINDOW.WIDTH / 2) + 0.5)))) &&
+            (
+                (dx > 0 && this.WINDOW.LEFT < 50) || 
+                (dx < 0 && this.WINDOW.LEFT > 0))
+            ) {
+                this.WINDOW.LEFT += dx;
+            }
             this.kapitoshka.x += dx;
-            this.WINDOW.LEFT += dx;
         }
         if ((dy > 0 && this.kapitoshka.y + dy <= HEIGHT - 1 && !this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'down')) ||
             (dy < 0 && this.kapitoshka.y - dy >= 0 && !this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'up'))
