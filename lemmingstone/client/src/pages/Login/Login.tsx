@@ -21,18 +21,20 @@ const Login: React.FC<IBasePage> = (props: IBasePage) => {
             }
         }
     }
-    const backClickHandler = () => setPage(PAGES.PRELOADER);
+    const backClickHandler = () => setPage(PAGES.MAINPAGE);
 
     return (<div className='login'>
-        <div>Логин</div>
+        <div className='login-name'> Авторизация </div>
         <div className='login-wrapper'>
             <div className='login-inputs'>
-                <input ref={loginRef} placeholder='логин' />
-                <input ref={passwordRef} placeholder='пароль' type='password' />
+                <div className='login-text1'> Введите логин </div>
+                <input id='login' ref={loginRef} />
+                <div className='login-text2'> Введите пароль </div>
+                <input id='password' ref={passwordRef} type="password"/>
             </div>
             <div className='login-buttons'>
-                <Button onClick={loginClickHandler} text='Авторизоваться' />
-                <Button onClick={backClickHandler} text='Назад' />
+                <button id='b1' onClick={loginClickHandler}> Войти </button>
+                <button id='b2' onClick={backClickHandler}> На главную </button>
             </div>
         </div>
     </div>)
