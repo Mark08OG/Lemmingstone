@@ -1,7 +1,7 @@
 <?php
 
 class User {
-     private $db;
+    private $db;
     function __construct($db) {
         $this->db = $db;
     }
@@ -10,10 +10,10 @@ class User {
         return $this->db->getUserByToken($token);
     }
 
-    public function login($login, $hash, /*$rnd*/) {
+    public function login($login, $hash, $rnd) {
         $user = $this->db->getUserByLogin($login);
         if ($user) {
-            if ($user->password === $hash) {
+            if (md5($user->password . $rnd) === $hash) {
                 $token = md5(rand());
                 $this->db->updateToken($user->id, $token);
                 return [
@@ -55,6 +55,30 @@ class User {
         ];
     }
     return ['error' => 1004]; // Ошибка, если не удалось зарегистрировать
-}
+    }
 
+    public function changeName($token, $name){
+        $user = $this->db->getUserByToken($token);
+        if($user){
+            $this->db->changeName($user->id,$name);
+            return[
+                'name' => $name
+            ];
+        }
+        return ['error => 705'];
+    }
+
+    public function changePassword($token,$oldPassword,$newPassword){
+        $user = $this->db->getUserByToken($token);
+        if($user){
+            if(md5($user->login . $oldPassword) === $user->password){
+                $hash = md5($user->login . $newPassword);
+                $this->db->changePassword($user->id,$hash);
+                return true;
+            }
+            return ['error' => 1002];
+        }
+        return ['error' => 705];
+    }
+    
 }
