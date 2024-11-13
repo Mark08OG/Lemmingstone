@@ -8,7 +8,7 @@ class DB {
         $port = '3306';
         $user = 'root';
         $pass = 'root';
-        $db = 'lemmings';
+        $db = 'lemming_stone';
         $connect = "mysql:host=$host;port=$port;dbname=$db;charset=utf8";
         //$this->pdo = new PDO($connect, $user, $pass);
     }
@@ -38,12 +38,16 @@ class DB {
     }
 
     public function getUserByLogin($login) {
+<<<<<<< HEAD
         $user = new stdClass();
         $user->id = 1;
         $user->password = md5('vasya'.'111');
         $user->name = 'Vasya Pupkin';
         return $user;
         //return $this->query("SELECT * FROM users WHERE login=?", [$login]);
+=======
+        return $this->query("SELECT * FROM users WHERE login=?", [$login]);
+>>>>>>> e6ea8b3395a6fc99e59aa8da912dad2e0f353ed0
     }
 
     public function getUserByToken($token) {
@@ -58,8 +62,15 @@ class DB {
     }
 
     public function registration($login, $password, $name) {
-        $stmt = $this->pdo->prepare("INSERT INTO users (login, password, name) VALUES (?, ?, ?)");
-        $stmt->execute([$login, $password, $name]); // Проверьте, что password не равен null
+        $this->execute("INSERT INTO users (login,password,name) VALUES (?, ?, ?)",[$login, $hash, $name]);
+    }
+
+    public function changeName($userId, $name){
+       $this->execute("UPDATE users SET name=? WHERE id=?", [$name, $userId]);
+    }
+
+    public function changePassword($userId,$hash){
+        $this->execute("UPDATE users SET password=? WHERE id=?", [$hash, $userId]);
     }
 
     public function getChatHash() {
@@ -102,6 +113,7 @@ class DB {
     public function setLemmingForUser($userId, $lemmingId) {
         return true;
     }
+<<<<<<< HEAD
 
     public function getCatalog(){
         $card1 = new stdClass();
@@ -121,4 +133,6 @@ class DB {
        
         return [$card1,$card2,$card3];
     }
+=======
+>>>>>>> e6ea8b3395a6fc99e59aa8da912dad2e0f353ed0
 }

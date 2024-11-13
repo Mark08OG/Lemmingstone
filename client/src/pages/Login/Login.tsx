@@ -17,7 +17,11 @@ const Login: React.FC<IBasePage> = (props: IBasePage) => {
             const password = passwordRef.current.value;
             //if (1) { // тестовое условие, чтобы логин всегда был успешный и работал без бекенда
             if (login && password && await server.login(login, password)) {
+<<<<<<< HEAD
                 setPage(PAGES.LOBBY);
+=======
+                setPage(PAGES.CHAT);
+>>>>>>> e6ea8b3395a6fc99e59aa8da912dad2e0f353ed0
             }
         }
     }

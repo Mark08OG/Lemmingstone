@@ -72,16 +72,22 @@ class Application {
         return ['error' => 242];
     }
 
+<<<<<<< HEAD
     // жалкая пародия
+=======
+>>>>>>> e6ea8b3395a6fc99e59aa8da912dad2e0f353ed0
     public function generateMap() {
         return $this->map->generateMap();
     }
 
+<<<<<<< HEAD
     public function getCatalog(){
         return $this->shop->getCatalog();
     }
 
     // неповторимый оригинал
+=======
+>>>>>>> e6ea8b3395a6fc99e59aa8da912dad2e0f353ed0
     public function getLemmings($params) {
         if ($params['token']) {
             $user = $this->user->getUser($params['token']);
@@ -103,4 +109,30 @@ class Application {
         }
         return ['error' => 242];
     }
+<<<<<<< HEAD
+=======
+
+    public function changeName($params){
+        if($params['token'] && $params['name']){
+            $user = $this->user->getUser($params['token']);
+            if($user){
+                return $this->user->changeName($params['token'], $params['name']);
+            }
+            return ['error' => 705];
+        }
+        return ['error' => 242];
+    }
+
+    public function changePassword($params){
+        if($params['token'] && $params['oldPassword'] && $params['newPassword']){
+            $user = $this->user->getUser($params['token']);
+            if ($user) {
+                return $this->user->changePassword($params['token'], $params['oldPassword'], $params['newPassword']);
+            }
+            return ['error' => 705];
+        }
+        return ['error' => 242];
+    }
+
+>>>>>>> e6ea8b3395a6fc99e59aa8da912dad2e0f353ed0
 }
