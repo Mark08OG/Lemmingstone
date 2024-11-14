@@ -48,8 +48,8 @@ const GamePage: React.FC<IBasePage> = (props: IBasePage) => {
     function calcSplines(points:TPoint[], coeffs:TCoeffs): TPoint[] {
         
         const dx = WINDOW.WIDTH / 1200;
-        const pointsToDraw = []
-
+        const pointsToDraw: TPoint[] = [];
+        
         for (let i = 0; i < points.length - 1; i++) {
             for (let x = points[i].x; x <= points[i + 1].x; x += dx) {
                 const t = x - points[i].x;

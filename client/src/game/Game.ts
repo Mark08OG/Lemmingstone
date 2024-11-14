@@ -62,7 +62,7 @@ class Game {
     }
 
     move(dx: number, dy: number): void {
-        if (this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'right') || this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'left') && this.dx != 0) {
+        if ((this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'right') || this.checkCollision(this.kapitoshka.x, this.kapitoshka.y, 'left')) && this.dx != 0) {
             this.dy = 0;
             this.dy -= 0.04;
         }
