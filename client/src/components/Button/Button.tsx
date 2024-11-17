@@ -23,11 +23,13 @@ const Button: React.FC<TButton> = (props: TButton) => {
     } = props;
 
     return (<button
-        className={cn('button', `button-${variant}`, className, { 'hover': isHover, 'disabled': isDisabled })}
+        className={cn('button',`button-${variant}`, className, { 'hover': isHover, 'disabled': isDisabled })}
         onClick={onClick}
     >
         {text}
     </button>);
+
+
 }
 
 export default Button;

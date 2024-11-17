@@ -1,20 +1,76 @@
 .login {
+    &-name {
+        place-items: center;
+        display: grid;
+        font-size: 55px;
+        font-weight: bold;
+        margin-block-start: 1vh;
+    }
 
+    &-wrapper {
+        display: block;
+        width: 680px;
+        height: 490px;
+        background-color: white;
+        border: 1px solid black;
+        margin: 24px 390px ;
+        border-radius: 5px;
+    }
     &-inputs {
-        display: flex;
-        flex-direction: column;
+        padding: 50px 40px;
 
-        input {
-            margin: 10px;
-            padding: 0 10px 5px 10px;
-            background-color: aquamarine;
-            width: 300px;
+        #login {
+            padding: 10px 115px;
+            background-color: #D2EEDA;
+            margin-block-start: 4vh;
+            border: 1px solid black;
+        }
+
+        #password {
+            padding: 10px 115px;
+            background-color: #D2EEDA;
+            margin-block-start: 4vh;
+            border: 1px solid black;
         }
     }
 
-    &-buttons {
-        display: flex;
-        justify-content: space-between;
-        max-width: 500px;
+    &-text1 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-right: 50vh;
     }
+
+    &-text2 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-block-start: 2vh;
+        margin-right: 50vh;
+    }
+
+    &-buttons{
+        #b1 {
+            background-color: #BDF3BF;
+            width: 400px;
+            height: 115px;
+            margin-left: 10px;
+            font-size: 60px;
+            font-weight: bold;
+            border-radius: 10px;
+            border: 1px solid black;
+            margin-block-start: -2vh;
+        }
+    
+        #b2 {
+            background-color: #DDC2F3;
+            border-radius: 7px;
+            width: 250px;
+            height: 75px;
+            margin: 8px 750px;
+            font-size: 30px;
+            font-weight: bold;
+            margin-block-start: -1vh;
+            border: 1px solid black;
+        }
+    }
+   
 }

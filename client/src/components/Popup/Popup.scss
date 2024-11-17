@@ -15,7 +15,6 @@ $height-wrapper: 200px;
         min-width: $width-wrapper;
         min-height: $height-wrapper;
         background-color: black;
-        border: 6px solid $button-border-color;
         border-radius: 10px;
         padding: 0 20px 0 20px;
     }
@@ -30,7 +29,7 @@ $height-wrapper: 200px;
         margin-top: 10px;
         font-size: 60px;
         color: $text-color;
-        background-color: $button-hover-color;
+ 
         -webkit-background-clip: text;
         -webkit-text-stroke: 8px transparent;
     }
@@ -38,7 +37,7 @@ $height-wrapper: 200px;
     &--info-text {
         font-size: 40px;
         color: $text-color;
-        background-color: $button-hover-color;
+  
         -webkit-background-clip: text;
         -webkit-text-stroke: 4px transparent;
     }
